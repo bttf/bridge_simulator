@@ -1,0 +1,25 @@
+{
+  "name": "spacefield",
+  "version": "0.0.1",
+  "description": "a world",
+  "main": "js/app.js",
+  "dependencies": {
+    "express": "*",
+    "consolidate": "~0.9.1",
+    "path": "~0.4.9",
+    "mustache": "~0.7.2",
+    "jasmine-node": "~1.11.0",
+    "requirejs": "~2.1.9"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "node node_modules/jasmine-node/lib/jasmine-node/cli.js spec"
+  },
+  "keywords": [
+    "game",
+    "html5",
+    "javascript"
+  ],
+  "author": "bttf",
+  "license": "BSD-2-Clause"
+}
