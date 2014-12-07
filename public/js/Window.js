@@ -15,6 +15,7 @@ Window.prototype.render = function(time) {
 };
 
 Window.prototype.draw = function(context) {
+  context.lineWidth = 1;
   context.strokeStyle = '#00dd00';
 
   context.beginPath();
@@ -24,5 +25,5 @@ Window.prototype.draw = function(context) {
   context.lineTo(this.x, this.y + this.height);
   context.lineTo(this.x, this.y);
   context.stroke();
-
+  context.closePath();
 };

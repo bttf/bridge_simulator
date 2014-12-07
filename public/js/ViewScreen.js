@@ -15,8 +15,6 @@ ViewScreen.prototype.init = function(canvas) {
   this.width = (this.canvas.width - this.canvas.winBuffer * 2) * 2/3;
   this.height = (this.canvas.height - this.canvas.winBuffer * 2) * 3/5;
 
-  console.log('view screen width: %d', this.width);
-
   this.x = 0 + this.canvas.winBuffer;
   this.y = 0 + this.canvas.winBuffer;
 
@@ -25,11 +23,18 @@ ViewScreen.prototype.init = function(canvas) {
               this.width,
               this.height);
 
-  this.starfield.init(this.x,
-                      this.y,
-                      this.width,
-                      this.height);
+  // this.starfield.init(this.x,
+  //                     this.y,
+  //                     this.width,
+  //                     this.height);
 
+  this.starfield.init(this.width - this.canvas.winBuffer,
+                      this.height - this.canvas.winBuffer,
+                      (this.x + this.width / 2),
+                      (this.y + this.height / 2),
+                      512,
+                      4,
+                      256);
 };
 
 ViewScreen.prototype.render = function(time) {
@@ -44,9 +49,8 @@ ViewScreen.prototype.render = function(time) {
 };
 
 ViewScreen.prototype.draw = function(context) {
-  this.w.draw(context);
-
   this.starfield.draw(context);
+  this.w.draw(context);
 
 };
 

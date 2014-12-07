@@ -1,5 +1,5 @@
 function Navigation() {
-  this.speed = 0;
+  this.speed = 5;
 
   this.entities = [];
 
