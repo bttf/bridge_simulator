@@ -1,18 +1,23 @@
-function Navigation() {
-  this.speed = 5;
+define(function() {
+  function Navigation() {
+    this.speed = 5;
 
-  this.entities = [];
+    this.entities = [];
 
-}
+  }
 
-Navigation.prototype.entitiesVisible = function() {
-  if (this.entities.length > 0)
-    return true;
+  Navigation.prototype.entitiesVisible = function() {
+    if (this.entities.length > 0) {
+      return true;
+    }
 
-  return false
+    return false;
 
-};
+  };
 
-Navigation.prototype.setSpeed = function(speed) {
-  this.speed = speed;
-};
+  Navigation.prototype.setSpeed = function(speed) {
+    this.speed = speed;
+  };
+
+  return Navigation;
+});

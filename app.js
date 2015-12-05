@@ -1,13 +1,18 @@
 var port = 8000;
-var express = require('express') 
-  , app = express();
-var http = require('http')
-  , server = http.createServer(app);
+var express = require('express');
+var app = express();
+var http = require('http');
+var server = http.createServer(app);
 var engines = require('consolidate');
 var path = require('path');
+var io = require('socket.io')(server);
 
 server.listen(port);
 console.log("Lets have a listen on port "+ port + "...");
+
+io.on('connection', function(socket) {
+  console.log('hey this is socket, hi ');
+});
 
 app.enable('trust proxy');
 app.engine('html', engines.mustache);
