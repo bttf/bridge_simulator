@@ -1,10 +1,20 @@
-define(["./ViewScreen", "./Navigation", "./Communications"], function(ViewScreen, Navigation, Communications) {
+define([
+  "./ViewScreen",
+  "./Navigation",
+  "./Communications",
+  "./EventAggregator",
+  "./MouseObserver",
+], function(ViewScreen, Navigation, Communications, EventAggregator, MouseObserver) {
+
   function Game() {
     this.winBuffer = 20;
 
     this.nav = new Navigation();
     this.viewScreen = new ViewScreen(this.nav);
     this.com = new Communications();
+
+    this.ea = new EventAggregator();
+    this.mo = new MouseObserver();
 
   }
 
@@ -18,6 +28,9 @@ define(["./ViewScreen", "./Navigation", "./Communications"], function(ViewScreen
 
     this.viewScreen.init(this.canvas);
     this.com.init(this.canvas);
+
+    this.ea.addObserver(this.mo);
+    this.mo.addHoverObserver(this.com.textBox);
 
   };
 
@@ -36,5 +49,13 @@ define(["./ViewScreen", "./Navigation", "./Communications"], function(ViewScreen
 
   };
 
+  Game.prototype.events = {
+    onMouseMove: function(evt) {
+      this.ea.onMouseMove(evt);
+
+    },
+  };
+
   return Game;
+
 });

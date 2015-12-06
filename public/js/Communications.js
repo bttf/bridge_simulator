@@ -27,7 +27,11 @@ define(["./socket.io", "./Window", "./TextBox"], function(io, Window, TextBox) {
                   this.width,
                   this.height);
 
-      this.textBox.init(this, canvas);
+      var textBoxX = this.x + canvas.winBuffer;
+      var textBoxWidth = this.width - (canvas.winBuffer * 2);
+      var textBoxHeight = this.height * 1/8;
+      var textBoxY = this.y + (this.height - textBoxHeight - canvas.winBuffer);
+      this.textBox.init(textBoxX, textBoxY, textBoxWidth, textBoxHeight);
 
     },
 
@@ -38,8 +42,8 @@ define(["./socket.io", "./Window", "./TextBox"], function(io, Window, TextBox) {
       io.on('message', function(data) {
         msgs.push(data);
         msgs = msgs.slice(0, 9);
-      });
 
+      });
     },
 
     render: function(time) {

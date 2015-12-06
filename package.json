@@ -4,12 +4,13 @@
   "description": "a world",
   "main": "js/app.js",
   "dependencies": {
-    "express": "*",
     "consolidate": "~0.9.1",
-    "path": "~0.4.9",
-    "mustache": "~0.7.2",
+    "express": "*",
     "jasmine-node": "~1.11.0",
-    "requirejs": "~2.1.9"
+    "mustache": "~0.7.2",
+    "path": "~0.4.9",
+    "requirejs": "~2.1.9",
+    "socket.io": "^1.3.7"
   },
   "scripts": {
     "start": "node app.js",

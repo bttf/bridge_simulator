@@ -1,6 +1,5 @@
 define(function() {
-  function Window() {
-  }
+  function Window() {}
 
   Window.prototype.init = function(x, y, width, height) {
     console.log('window init\'ed');
@@ -10,13 +9,15 @@ define(function() {
     this.width = width;
     this.height = height;
 
+    this.lineWidth = 1;
+
   };
 
   Window.prototype.render = function(time) {
   };
 
   Window.prototype.draw = function(context) {
-    context.lineWidth = 1;
+    context.lineWidth = this.lineWidth;
     context.strokeStyle = '#00dd00';
 
     context.beginPath();

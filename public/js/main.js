@@ -10,7 +10,7 @@ window.requestAnimFrame = (function(){
           };
   })();
 
-require(['js/game'], function (Game) {
+require(['js/Game'], function (Game) {
   var g = new Game();
 
   var init = function() {
@@ -31,9 +31,6 @@ require(['js/game'], function (Game) {
 
     context = canvas.getContext('2d');
 
-    horizon = (canvas.height / 2);
-    center_axis = (canvas.width / 2);
-
     add_event_listeners();
 
   };
@@ -45,7 +42,7 @@ require(['js/game'], function (Game) {
 
     // body.addEventListener("mousedown", mouse_down, false);
     // body.addEventListener("mouseup", mouse_up, false);
-    // body.addEventListener("mousemove", mouse_move, false);
+    body.addEventListener("mousemove", g.events.onMouseMove.bind(g), false);
 
   };
 

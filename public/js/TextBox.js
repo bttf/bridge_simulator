@@ -1,29 +1,37 @@
 define(["./Window"], function(Window) {
   function TextBox() {
     this.w = new Window();
+
   }
 
   TextBox.prototype = {
-    init: function(parent, canvas) {
-      this.width = parent.width - (canvas.winBuffer * 2);
-      this.height = parent.height * 1/8;
-      this.x = parent.x + canvas.winBuffer;
-      this.y = parent.y + (parent.height - this.height - canvas.winBuffer);
+    init: function(x, y, width, height) {
+      this.x = x;
+      this.y = y;
+      this.width = width;
+      this.height = height;
 
-      this.w.init(this.x,
-                  this.y,
-                  this.width,
-                  this.height);
+      this.w.init(x, y, width, height);
+
     },
 
     render: function(time) {
       this.w.render(time);
+
+      this.w.lineWidth = this.isHovered ? 2 : 1;
+
     },
 
     draw: function(context) {
       this.w.draw(context);
+
+    },
+
+    receiveHoverEvent(state) {
+      this.isHovered = state.isHover;
     },
   };
 
   return TextBox;
+
 });
