@@ -40,8 +40,8 @@ require(['js/Game'], function (Game) {
     // body.addEventListener("keyup", key_up, false);
     // body.addEventListener("keypress", key_press, false);
 
-    // body.addEventListener("mousedown", mouse_down, false);
-    // body.addEventListener("mouseup", mouse_up, false);
+    body.addEventListener("mousedown", g.events.onMouseDown.bind(g), false);
+    body.addEventListener("mouseup", g.events.onMouseUp.bind(g), false);
     body.addEventListener("mousemove", g.events.onMouseMove.bind(g), false);
 
   };

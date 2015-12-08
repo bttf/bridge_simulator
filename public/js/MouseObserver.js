@@ -1,46 +1,44 @@
-define(function() {
-  function MouseMediator() {
-    this.hoverObservers = [];
-
+define(["./lodash.min"], function(_) {
+  function MouseObserver() {
+    this.observers = [];
+    this.eventState = {};
   }
 
-  MouseMediator.prototype = {
-    addHoverObserver: function(observer) {
-      this.hoverObservers.push(observer);
-
+  MouseObserver.prototype = {
+    addObserver: function(observer) {
+      this.observers.push(observer);
     },
 
-    receiveEvents(state) {
-      this.mouseX = state.mouseX;
-      this.mouseY = state.mouseY;
-
-      if (this.mouseX && this.mouseY) {
-        this.notifyHoverObservers();
-      }
-
+    receiveEvents: function(state) {
+      this.eventState.mouseX = state.mouseX;
+      this.eventState.mouseY = state.mouseY;
+      this.eventState.mouseDown = state.mouseDown;
+      this.notify();
     },
 
-    notifyHoverObservers() {
+    notify: function() {
       var _this = this;
-      this.hoverObservers.forEach(function(observer) {
-        observer.receiveHoverEvent({ isHover: _this.isHovering(observer) });
+      this.observers.forEach(function(observer) {
+        var state = _.assign(_this.eventState, {
+          isHovered: _this.isHovering(observer),
+        });
 
+        observer.receiveMouseInput(state);
       });
     },
 
-    isHovering(entity) {
+
+    isHovering: function(entity) {
       var x1 = entity.x;
       var y1 = entity.y;
       var x2 = entity.x + entity.width;
       var y2 = entity.y + entity.height;
-      var mx = this.mouseX;
-      var my = this.mouseY;
+      var mx = this.eventState.mouseX;
+      var my = this.eventState.mouseY;
 
       return mx >= x1 && mx <= x2 && my >= y1 && my <= y2;
-
     },
   };
 
-  return MouseMediator;
-
+  return MouseObserver;
 });

@@ -30,7 +30,7 @@ define([
     this.com.init(this.canvas);
 
     this.ea.addObserver(this.mo);
-    this.mo.addHoverObserver(this.com.textBox);
+    this.mo.addObserver(this.com.textBox);
 
   };
 
@@ -52,10 +52,17 @@ define([
   Game.prototype.events = {
     onMouseMove: function(evt) {
       this.ea.onMouseMove(evt);
-
     },
+
+    onMouseDown: function(evt) {
+      this.ea.onMouseDown(evt);
+    },
+
+    onMouseUp: function(evt) {
+      this.ea.onMouseUp(evt);
+    },
+
   };
 
   return Game;
-
 });
