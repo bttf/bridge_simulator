@@ -30,6 +30,7 @@ require(['js/Game'], function (Game) {
     body.appendChild(canvas);
 
     context = canvas.getContext('2d');
+    context.translate(0.5, 0.5);
 
     add_event_listeners();
 
