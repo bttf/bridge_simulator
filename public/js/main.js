@@ -24,8 +24,8 @@ require(['js/Game'], function (Game) {
 
     canvas = document.createElement("canvas");
     canvas.id = "canvas";
-    canvas.width = window.innerWidth - 15;
-    canvas.height = window.innerHeight - 25;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
     body.appendChild(canvas);
 
