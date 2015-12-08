@@ -11,29 +11,21 @@ define(["./Window", "./Starfield"], function(Window, Starfield) {
 
     this.canvas = canvas;
 
-    this.width = (this.canvas.width - this.canvas.winBuffer * 2) * 2/3;
-    this.height = (this.canvas.height - this.canvas.winBuffer * 2) * 3/5;
+    this.width = (canvas.width - canvas.winBuffer * 2) * 2/3;
+    this.height = (canvas.height - canvas.winBuffer * 2) * 3/5;
 
-    this.x = 0 + this.canvas.winBuffer;
-    this.y = 0 + this.canvas.winBuffer;
+    this.x = 0 + canvas.winBuffer;
+    this.y = 0 + canvas.winBuffer;
 
-    this.w.init(this.x,
-                this.y,
-                this.width,
-                this.height);
-
-                // this.starfield.init(this.x,
-                //                     this.y,
-                //                     this.width,
-                //                     this.height);
-
-                this.starfield.init(this.width - this.canvas.winBuffer,
-                                    this.height - this.canvas.winBuffer,
-                                    (this.x + this.width / 2),
-                                    (this.y + this.height / 2),
-                                    512,
-                                    4,
-                                    256);
+    console.log('shieet');
+    window.debug = this.starfield;
+    this.starfield.init(this.width,
+                        this.height + this.canvas.winBuffer,
+                        (this.x + this.width / 2),
+                        (this.y + this.height / 2),
+                        512,
+                        4,
+                        256);
   };
 
   ViewScreen.prototype.render = function(time) {
